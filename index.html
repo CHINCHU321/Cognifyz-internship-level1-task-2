@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Color Changing Button</title>
+  <link rel="stylesheet" href="style.css">
+  
+</head>
+<body>
+
+<button id="colorButton" onclick="changeColor()">Click me</button>
+<input type="text" id="num1" placeholder="Enter first number">
+<input type="text" id="num2" placeholder="Enter second number">
+<button onclick="calculate()">Calculate</button>
+
+<p id="result"></p>
+<script>
+  function changeColor() {
+    var button = document.getElementById("colorButton");
+    var randomColor = getRandomColor();
+    button.style.backgroundColor = randomColor;
+  }
+
+  function getRandomColor() {
+    var letters = '0123456789ABCDEF';
+    var color = '#';
+    for (var i = 0; i < 6; i++) {
+      color += letters[Math.floor(Math.random() * 16)];
+    }
+    return color;
+  }
+  var currentTime = new Date();
+  var hours = currentTime.getHours();
+
+  var greeting;
+
+  if (hours < 12) {
+    greeting = "Good morning!";
+  } else if (hours < 18) {
+    greeting = "Good afternoon!";
+  } else {
+    greeting = "Good evening!";
+  }
+
+  alert(greeting);
+  function calculate() {
+    var num1 = parseFloat(document.getElementById("num1").value);
+    var num2 = parseFloat(document.getElementById("num2").value);
+
+    if (!isNaN(num1) && !isNaN(num2)) {
+      var result = num1 + num2;
+      document.getElementById("result").innerHTML = "Result: " + result;
+    } else {
+      document.getElementById("result").innerHTML = "Please enter valid numbers.";
+    }
+  }
+</script>
+
+</body>
+</html>
